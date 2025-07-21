@@ -16,17 +16,14 @@ void	ft_putnbr(int nb)
 {
 	int		length;
 	int		i;
-	int		mod;
 	int		temp;
 	char	c;
 
-	length = -1;
+	length = 0;
 	i = 1;
-	mod = 1;
 	temp = nb;
-	while (mod != 0)
+	while (temp != 0)
 	{
-		mod = temp % 10;
 		temp = temp / 10;
 		length++;
 	}

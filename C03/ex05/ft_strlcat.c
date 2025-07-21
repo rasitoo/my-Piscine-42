@@ -3,15 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtapiado <rtapiado@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rtapiado <rtapiado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/20 18:29:16 by rtapiado          #+#    #+#             */
-/*   Updated: 2025/07/20 18:29:16 by rtapiado         ###   ########.fr       */
+/*   Created: 2025/07/18 12:53:36 by rtapiado          #+#    #+#             */
+/*   Updated: 2025/07/21 11:34:17 by rtapiado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <bsd/string.h>
-#include <stdio.h>
 
 unsigned int	ft_strlen(char *str)
 {
@@ -44,12 +41,3 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	dest[dlen + i] = '\0';
 	return (dlen + slen);
 }
-
-// int	main(void)
-// {
-// 	char	str[3] = "est";
-// 	char	str2[] =  "estasrewgsdgfgfdgdfsdfgdgfhfgfgdg";
-// 	printf("%u\n", ft_strlcat(str, str2, sizeof(str)));
-// 	// printf("%zu\n", strlcat(str, str2, sizeof(str)));
-// 	printf("%s\n", str);
-// }
