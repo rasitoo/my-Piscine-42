@@ -6,11 +6,9 @@
 /*   By: rtapiado <rtapiado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:54:13 by rtapiado          #+#    #+#             */
-/*   Updated: 2025/07/23 13:10:25 by rtapiado         ###   ########.fr       */
+/*   Updated: 2025/07/27 15:13:37 by rtapiado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 int	ft_length_base(char *base)
 {
@@ -24,7 +22,7 @@ int	ft_length_base(char *base)
 	while (base[length] != '\0')
 	{
 		length++;
-		if (base[length] == '-' && base[length] == '+')
+		if (base[length] == '-' || base[length] == '+')
 			return (0);
 	}
 	if (length < 2)
@@ -84,15 +82,29 @@ int	ft_decimal_base(char *str, char *base, int length, int pos)
 	return (res);
 }
 
-int	ft_num_length(char *str)
+int	ft_num_length(char *str, char *base)
 {
 	int	i;
+	int	j;
+	int	found;
 
 	i = 0;
-	while (*str != '\0')
+	while (str[i] != '\0')
 	{
+		j = 0;
+		found = 0;
+		while (base[j] != '\0')
+		{
+			if (str[i] == base[j])
+			{
+				found = 1;
+				break ;
+			}
+			j++;
+		}
+		if (!found)
+			return (i);
 		i++;
-		str++;
 	}
 	return (i);
 }
@@ -114,14 +126,14 @@ int	ft_atoi_base(char *str, char *base)
 	while (str[i] == '-' || str[i] == '+')
 		if (str[i++] == '-')
 			neg = -neg;
-	pos = ft_num_length(&str[i]) - 1;
-	return (ft_decimal_base(str, base, length, pos));
+	pos = ft_num_length(&str[i], base) - 1;
+	return (ft_decimal_base(str, base, length, pos) * neg);
 }
 
 // int	main(void)
 // {
 // 	printf("%d", ft_atoi_base("A930A5", "0123456789ABCDEF"));
-// 	//ft_atoi_base("2A", "0123456789ABCDEF");
-// 	// printf("%d", ft_decimal_base('F', "0123456789ABCDEF"));
-// 	//printf("%d", ft_decimal_base('D', "0123456789ABCDEF"));
+// 	ft_atoi_base("2A", "0123456789ABCDEF");
+// 	printf("%d", ft_atoi_base('F', "0123456789ABCDEF"));
+// 	printf("%d", ft_atoi_base('D', "0123456789ABCDEF"));
 // }
