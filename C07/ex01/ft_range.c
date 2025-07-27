@@ -1,48 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtapiado <rtapiado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 15:04:36 by rtapiado          #+#    #+#             */
-/*   Updated: 2025/07/23 10:03:48 by rtapiado         ###   ########.fr       */
+/*   Created: 2025/07/25 10:41:28 by rtapiado          #+#    #+#             */
+/*   Updated: 2025/07/25 12:40:15 by rtapiado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putnbr(int nb)
+int	*ft_range(int min, int max)
 {
-	char	buffer[12];
+	int		*arr;
 	int		i;
-	long	n;
+	size_t	l;
 
+	if (min >= max)
+	{
+		arr = NULL;
+		return (arr);
+	}
 	i = 0;
-	n = nb;
-	if (n == 0)
-	{
-		write(1, "0", 1);
-		return ;
-	}
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		n *= -1;
-	}
-	while (n > 0)
-	{
-		buffer[i++] = (n % 10) + '0';
-		n /= 10;
-	}
-	while (--i >= 0)
-		write(1, &buffer[i], 1);
+	l = (size_t)(max - min) + 1;
+	arr = malloc(l * 4);
+	while (min < max)
+		arr[i++] = min++;
+	arr[i] = '\0';
+	return (arr);
 }
+
+// #include <stdio.h>
 
 // int	main(void)
 // {
-// 	int	n;
+// 	int	*arr;
 
-// 	n = -2147483648;
-// 	ft_putnbr(n);
+// 	arr = ft_range(11, 20);
+// 	while (*arr != '\0')
+// 	{
+// 		printf("%d", *arr);
+// 		arr++;
+// 	}
 // }

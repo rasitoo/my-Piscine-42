@@ -1,48 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtapiado <rtapiado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 15:04:36 by rtapiado          #+#    #+#             */
-/*   Updated: 2025/07/23 10:03:48 by rtapiado         ###   ########.fr       */
+/*   Created: 2025/07/21 15:56:49 by rtapiado          #+#    #+#             */
+/*   Updated: 2025/07/23 10:11:12 by rtapiado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putnbr(int nb)
+int	ft_atoi(char *str)
 {
-	char	buffer[12];
-	int		i;
-	long	n;
+	int	neg;
+	int	res;
+	int	i;
 
+	neg = 1;
+	res = 0;
 	i = 0;
-	n = nb;
-	if (n == 0)
+	while ((str[i] >= 8 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	while (str[i] == '-' || str[i] == '+')
 	{
-		write(1, "0", 1);
-		return ;
+		if (str[i] == '-')
+			neg = -neg;
+		i++;
 	}
-	if (nb < 0)
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		write(1, "-", 1);
-		n *= -1;
+		res = 10 * res + (str[i] - '0');
+		i++;
 	}
-	while (n > 0)
-	{
-		buffer[i++] = (n % 10) + '0';
-		n /= 10;
-	}
-	while (--i >= 0)
-		write(1, &buffer[i], 1);
+	return (res * neg);
 }
 
 // int	main(void)
 // {
-// 	int	n;
+// 	char	*str;
 
-// 	n = -2147483648;
-// 	ft_putnbr(n);
+// 	str = " ---+--+1234ab567";
+// 	printf("%d", ft_atoi(str));
 // }

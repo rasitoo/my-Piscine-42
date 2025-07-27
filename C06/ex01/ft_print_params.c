@@ -1,48 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtapiado <rtapiado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 15:04:36 by rtapiado          #+#    #+#             */
-/*   Updated: 2025/07/23 10:03:48 by rtapiado         ###   ########.fr       */
+/*   Created: 2025/07/24 12:50:07 by rtapiado          #+#    #+#             */
+/*   Updated: 2025/07/24 12:53:36 by rtapiado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putnbr(int nb)
+int	main(int argc,	char *argv[])
 {
-	char	buffer[12];
-	int		i;
-	long	n;
+	int	i;
 
-	i = 0;
-	n = nb;
-	if (n == 0)
+	i = 1;
+	while (i < argc)
 	{
-		write(1, "0", 1);
-		return ;
+		while (*argv[i] != '\0')
+			write(1, argv[i]++, 1);
+		write(1, "\n", 1);
+		i++;
 	}
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		n *= -1;
-	}
-	while (n > 0)
-	{
-		buffer[i++] = (n % 10) + '0';
-		n /= 10;
-	}
-	while (--i >= 0)
-		write(1, &buffer[i], 1);
+	return (0);
 }
-
-// int	main(void)
-// {
-// 	int	n;
-
-// 	n = -2147483648;
-// 	ft_putnbr(n);
-// }

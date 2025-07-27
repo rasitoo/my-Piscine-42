@@ -1,48 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtapiado <rtapiado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 15:04:36 by rtapiado          #+#    #+#             */
-/*   Updated: 2025/07/23 10:03:48 by rtapiado         ###   ########.fr       */
+/*   Created: 2025/07/18 13:31:25 by rtapiado          #+#    #+#             */
+/*   Updated: 2025/07/22 17:38:36 by rtapiado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putnbr(int nb)
+void	ft_putstr(char *str)
 {
-	char	buffer[12];
-	int		i;
-	long	n;
+	int	n;
 
-	i = 0;
-	n = nb;
-	if (n == 0)
+	n = 0;
+	while (str[n] != '\0' )
 	{
-		write(1, "0", 1);
-		return ;
+		write(1, &str[n], 1);
+		n++;
 	}
-	if (nb < 0)
-	{
-		write(1, "-", 1);
-		n *= -1;
-	}
-	while (n > 0)
-	{
-		buffer[i++] = (n % 10) + '0';
-		n /= 10;
-	}
-	while (--i >= 0)
-		write(1, &buffer[i], 1);
 }
-
 // int	main(void)
 // {
-// 	int	n;
-
-// 	n = -2147483648;
-// 	ft_putnbr(n);
+// 	ft_putstr("str");
 // }

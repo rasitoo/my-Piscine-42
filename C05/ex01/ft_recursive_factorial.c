@@ -1,48 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtapiado <rtapiado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/18 15:04:36 by rtapiado          #+#    #+#             */
-/*   Updated: 2025/07/23 10:03:48 by rtapiado         ###   ########.fr       */
+/*   Created: 2025/07/22 18:13:00 by rtapiado          #+#    #+#             */
+/*   Updated: 2025/07/23 17:45:57 by rtapiado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putnbr(int nb)
+int	ft_recursive_factorial(int nb)
 {
-	char	buffer[12];
-	int		i;
-	long	n;
-
-	i = 0;
-	n = nb;
-	if (n == 0)
-	{
-		write(1, "0", 1);
-		return ;
-	}
 	if (nb < 0)
-	{
-		write(1, "-", 1);
-		n *= -1;
-	}
-	while (n > 0)
-	{
-		buffer[i++] = (n % 10) + '0';
-		n /= 10;
-	}
-	while (--i >= 0)
-		write(1, &buffer[i], 1);
+		return (0);
+	if (nb <= 1)
+		return (1);
+	else
+		return ((nb) * (ft_recursive_factorial((nb - 1))));
 }
+// #include <stdio.h>
 
 // int	main(void)
 // {
-// 	int	n;
-
-// 	n = -2147483648;
-// 	ft_putnbr(n);
+// 	printf("%d", ft_recursive_factorial(1));
 // }
