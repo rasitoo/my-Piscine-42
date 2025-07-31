@@ -6,9 +6,19 @@
 /*   By: rtapiado <rtapiado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 13:28:35 by rtapiado          #+#    #+#             */
-/*   Updated: 2025/07/27 15:16:28 by rtapiado         ###   ########.fr       */
+/*   Updated: 2025/07/31 11:05:25 by rtapiado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int		ft_atoi_base(char *str, char *base);
+int		ft_length_base(char *base);
+int		ft_num_length(char *str, char *base);
+int		ft_decimal_base(char *str, char *base, int length, int pos);
+int		ft_power(int num, int power);
+void	ft_change_base(int nbr, char *base, char *buffer);
+int		ft_strlen(char *str);
+char	*ft_reverse_char(char *buff);
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
 
 int	ft_length_base(char *base)
 {

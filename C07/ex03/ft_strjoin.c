@@ -6,7 +6,7 @@
 /*   By: rtapiado <rtapiado@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 12:56:50 by rtapiado          #+#    #+#             */
-/*   Updated: 2025/07/25 14:32:24 by rtapiado         ###   ########.fr       */
+/*   Updated: 2025/07/27 13:27:28 by rtapiado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,15 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	return (ft_fill(size, strs, sep, str));
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int	main(void)
-{
-	char	*strs[4];
+// int	main(void)
+// {
+// 	char	*strs[4];
 
-	strs[0] = "Hola";
-	strs[1] = "que";
-	strs[2] = "tal";
-	strs[3] = "estas";
-	printf("%s", ft_strjoin(4, strs, "patata"));
-}
+// 	strs[0] = "Hola";
+// 	strs[1] = "que";
+// 	strs[2] = "tal";
+// 	strs[3] = "estas";
+// 	printf("%s", ft_strjoin(4, strs, "patata"));
+// }
