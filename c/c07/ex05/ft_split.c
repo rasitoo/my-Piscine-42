@@ -86,48 +86,45 @@ int	ft_get_x_word_length(char *word_start, char *sep)
 	return (found_length);
 }
 
-
 char	**ft_split(char *str, char *charset)
 {
+	int		words;
 	int		i;
 	int		j;
-	int		w_length;
-	int		words;
 	char	**strs;
-	char	*str2;
+	char	*word_ptr;
 
 	words = ft_count_words(str, charset);
-	i = 0;
 	strs = malloc(sizeof(char *) * words);
-	while (++i <= words)
+	i = 0;
+	while (i < words)
 	{
-		str2 = ft_get_x_word_pointer(str, charset, i);
-		w_length = ft_get_x_word_length(str2, charset);
-		strs[i - 1] = malloc(w_length);
+		word_ptr = ft_get_x_word_pointer(str, charset, i + 1);
+		strs[i] = malloc(ft_get_x_word_length(word_ptr, charset));
 		j = 0;
-		while (j < w_length)
+		while (j < ft_get_x_word_length(word_ptr, charset))
 		{
-			strs[i - 1][j] = str2[j];
+			strs[i][j] = word_ptr[j];
 			j++;
 		}
+		i++;
 	}
 	return (strs);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int	main(void)
-{
-	char	**strs;
+// int	main(void)
+// {
+// 	char	**strs;
 
-	// printf("%d\n", ft_count_words("Hola  que tal  ", "a"));
-	// printf("%s\n", ft_get_x_word_pointer("hola que tal estas  ", " ", 1));
-	// printf("%d\n", ft_get_x_word_length(ft_get_x_word_pointer("hola que tal estas  ", " ", 1), " "));
-	// printf("%d\n", ft_get_x_word_length("h h h h", ""));
-	strs = ft_split("holaaa que tal estas  ", " ");
-	while (*strs)
-	{
-		printf("%s\n", *strs);
-		strs++;
-	}
-}
+// 	// printf("%d\n", ft_count_words("Hola  que tal  ", "a"));
+// 	// printf("%s\n", ft_get_x_word_pointer("hola que tal estas  ", " ", 1));
+// 	// printf("%d\n", ft_get_x_word_length("h h h h", ""));
+// 	strs = ft_split("holaaa que tal estas  ", " ");
+// 	while (*strs)
+// 	{
+// 		printf("%s\n", *strs);
+// 		strs++;
+// 	}
+// }
